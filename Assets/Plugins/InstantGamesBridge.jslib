@@ -265,6 +265,18 @@ mergeInto(LibraryManager.library, {
 
     InstantGamesBridgeLeaderboardShowNativePopup: function(options) {
         window.leaderboardShowNativePopup(UTF8ToString(options))
+    },
+
+    InstantGamesBridgeShowOrderPayments: function(title) {
+        window.showOrderPayments(UTF8ToString(title))
+    },
+
+    InstantGamesBridgeIsPaymentSupported: function() {
+        var isPaymentSupported = window.getIsPaymentSupported()
+        var bufferSize = lengthBytesUTF8(isPaymentSupported) + 1
+        var buffer = _malloc(bufferSize)
+        stringToUTF8(isPaymentSupported, buffer, bufferSize)
+        return buffer
     }
 
 });

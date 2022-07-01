@@ -28,7 +28,7 @@ namespace Examples
         [SerializeField] private InputField _yandexLeaderboardNameInput;
 
         [SerializeField] private InputField _getSetScoreYandexScoreInput;
-        
+
         [SerializeField] private Button _setScoreButton;
 
         [SerializeField] private Button _getScoreButton;

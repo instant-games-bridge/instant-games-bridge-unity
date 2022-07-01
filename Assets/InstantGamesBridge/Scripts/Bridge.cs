@@ -8,6 +8,7 @@ using InstantGamesBridge.Modules.Leaderboard;
 using InstantGamesBridge.Modules.Platform;
 using InstantGamesBridge.Modules.Player;
 using InstantGamesBridge.Modules.Social;
+using InstantGamesBridge.Modules.Payment;
 #if !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
@@ -31,6 +32,8 @@ namespace InstantGamesBridge
         public static DeviceModule device { get; private set; }
 
         public static LeaderboardModule leaderboard { get; private set; }
+
+        public static PaymentModule payment { get; private set; }
 
 #if !UNITY_EDITOR
         [DllImport("__Internal")]
@@ -71,6 +74,7 @@ namespace InstantGamesBridge
                 social = gameObject.AddComponent<SocialModule>();
                 device = new DeviceModule();
                 leaderboard = gameObject.AddComponent<LeaderboardModule>();
+                payment = gameObject.AddComponent<PaymentModule>();
             }
 
             _initializationCallback?.Invoke(isInitialized);

@@ -48,11 +48,11 @@
                     .initialize()
                     .then(() => {
                         instantGamesBridge.advertisement.on(
-                            'interstitial_state_changed', 
+                            'interstitial_state_changed',
                             state => { unityInstance.SendMessage('Bridge', 'OnInterstitialStateChanged', state) })
 
                         instantGamesBridge.advertisement.on(
-                            'rewarded_state_changed', 
+                            'rewarded_state_changed',
                             state => { unityInstance.SendMessage('Bridge', 'OnRewardedStateChanged', state) })
 
                         unityInstance.SendMessage('Bridge', 'OnInitializationCompleted', 'true')
@@ -378,9 +378,9 @@
             window.onUnityLoadingProgressChanged = function(progress) {
                 loadingText.innerHTML = Math.ceil(progress * 100) + '%'
             }
-            
+
             createUnityInstance(
-                document.querySelector('#unity-canvas'), 
+                document.querySelector('#unity-canvas'),
                 {
                     dataUrl: 'Build/{{{ DATA_FILENAME }}}',
                     frameworkUrl: 'Build/{{{ FRAMEWORK_FILENAME }}}',
@@ -411,6 +411,18 @@
                 window.focus()
                 canvas.focus()
             })
+
+            window.showOrderPayments = function(title){
+                instantGamesBridge.payments
+                .showOrderPayments(title)
+                .then(orderResult => {
+                    console.log(orderResult)
+                })
+            }
+
+            window.getIsPaymentSupported = function(){
+                return instantGamesBridge.payments.isSupported.toString()
+            }
         </script>
     </body>
 </html>

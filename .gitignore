@@ -58,3 +58,12 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+Packages/manifest.json
+Packages/packages-lock.json
+ProjectSettings/ProjectVersion.txt
+Assets/InstantGamesBridge/Scripts/Modules/Payment/PaymentModule.cs.meta
+Assets/InstantGamesBridge/Scripts/Modules/Payment.meta
+Assets/Examples/Scripts/PaymentPanel.cs.meta
+Assets/Examples/Scenes/Example.unity
+Assets/StreamingAssets.meta
+.vscode/settings.json
