@@ -1,4 +1,5 @@
 ﻿using System;
+using InstantGamesBridge.Common;
 
 namespace InstantGamesBridge.Modules.Advertisement
 {
@@ -10,6 +11,12 @@ namespace InstantGamesBridge.Modules.Advertisement
         protected SetMinimumDelayBetweenInterstitialPlatformDependedOptions(int seconds)
         {
             this.seconds = seconds;
+        }
+    
+        public new string ToJson()
+        {
+            var platform = GetTargetPlatformString();
+            return seconds.ToString().SurroundWithKey(platform);
         }
     }
 }

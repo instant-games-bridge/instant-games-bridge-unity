@@ -16,8 +16,9 @@ namespace InstantGamesBridge.Modules.Advertisement
 
         public new string ToJson()
         {
+            var platform = GetTargetPlatformString();
             return position.ToString().ToLower().SurroundWithKey("position")
-                .SurroundWithKey(_targetPlatform.ToString().ToLower())
+                .SurroundWithKey(platform)
                 .SurroundWithBraces();
         }
     }
