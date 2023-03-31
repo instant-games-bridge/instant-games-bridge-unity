@@ -128,7 +128,7 @@
                         currentPercent = 100
                     }
 
-                    progressBarFill.style.width = `${ currentPercent + 1 }%`
+                    progressBarFill.style.width = `${ currentPercent }%`
 
                     if (currentPercent >= 100) {
                         clearInterval(progressBarFillingInterval)
@@ -278,6 +278,10 @@
                 return bridge.storage.isSupported(storageType).toString()
             }
 
+            window.getIsStorageAvailable = function(storageType) {
+                return bridge.storage.isAvailable(storageType).toString()
+            }
+
             window.getStorageData = function(key, storageType) {
                 let keys = key.split(STORAGE_KEYS_SEPARATOR)
 
@@ -404,6 +408,10 @@
 
             window.getIsRateSupported = function() {
                 return bridge.social.isRateSupported.toString()
+            }
+
+            window.getIsExternalLinksAllowed = function() {
+                return bridge.social.isExternalLinksAllowed.toString()
             }
 
             window.share = function(options) {

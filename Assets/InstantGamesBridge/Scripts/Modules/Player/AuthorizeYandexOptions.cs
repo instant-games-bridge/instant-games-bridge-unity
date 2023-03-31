@@ -1,4 +1,6 @@
 ﻿using System;
+using InstantGamesBridge.Common;
+using UnityEngine;
 
 namespace InstantGamesBridge.Modules.Player
 {
@@ -9,8 +11,13 @@ namespace InstantGamesBridge.Modules.Player
 
         public AuthorizeYandexOptions(bool scopes)
         {
-            _targetPlatform = OptionsTargetPlatform.Yandex;
+            _targetPlatformId = PlatformId.Yandex;
             this.scopes = scopes;
+        }
+
+        protected override string Serialize()
+        {
+            return JsonUtility.ToJson(this);
         }
     }
 }

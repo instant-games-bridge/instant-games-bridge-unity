@@ -10,12 +10,17 @@ namespace InstantGamesBridge.Common
             return "{" + json + "}";
         }
 
-        public static string SurroundWithKey(this string json, string key)
+        public static string SurroundWithKey(this string json, string key, bool quotes = false)
         {
-            return "\"" + key + "\": " + json;
+            if (quotes)
+            {
+                json = "\"" + json + "\"";
+            }
+            
+            return "\"" + key + "\":" + json;
         }
 
-        public static string Fix(this string json)
+        public static string FixBooleans(this string json)
         {
             return json.Replace("True", "true").Replace("False", "false");
         }
@@ -23,7 +28,7 @@ namespace InstantGamesBridge.Common
         public static string ToJson(this PlatformDependedOptionsBase[] platformDependedOptions)
         {
             var json = string.Empty;
-            var alreadyAddedPlatforms = new List<OptionsTargetPlatform>();
+            var alreadyAddedPlatforms = new List<PlatformId>();
 
             for (var i = 0; i < platformDependedOptions.Length; i++)
             {

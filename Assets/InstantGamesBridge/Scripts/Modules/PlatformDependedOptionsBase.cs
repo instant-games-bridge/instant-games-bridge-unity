@@ -1,41 +1,48 @@
 ﻿using System;
 using InstantGamesBridge.Common;
-using UnityEngine;
 
 namespace InstantGamesBridge.Modules
 {
     [Serializable]
     public abstract class PlatformDependedOptionsBase
     {
-        protected OptionsTargetPlatform _targetPlatform;
+        protected PlatformId _targetPlatformId;
 
-        public OptionsTargetPlatform GetTargetPlatform()
+        public PlatformId GetTargetPlatform()
         {
-            return _targetPlatform;
+            return _targetPlatformId;
         }
 
         public string ToJson()
         {
             var platform = GetTargetPlatformString();
-            return JsonUtility.ToJson(this).SurroundWithKey(platform);
+            return Serialize().FixBooleans().SurroundWithKey(platform).SurroundWithBraces();
         }
 
         public string GetTargetPlatformString()
         {
-            switch (_targetPlatform)
+            switch (_targetPlatformId)
             {
-                case OptionsTargetPlatform.VK:
+                case PlatformId.Mock:
+                    return "mock";
+                
+                case PlatformId.VK:
                     return "vk";
 
-                case OptionsTargetPlatform.Yandex:
+                case PlatformId.Yandex:
                     return "yandex";
 
-                case OptionsTargetPlatform.CrazyGames:
+                case PlatformId.CrazyGames:
                     return "crazy_games";
+                
+                case PlatformId.AbsoluteGames:
+                    return "absolute_games";
 
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        protected abstract string Serialize();
     }
 }

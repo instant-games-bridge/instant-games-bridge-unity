@@ -25,6 +25,9 @@ namespace InstantGamesBridge.Modules.Storage
         private static extern string InstantGamesBridgeIsStorageSupported(string storageType);
 
         [DllImport("__Internal")]
+        private static extern string InstantGamesBridgeIsStorageAvailable(string storageType);
+
+        [DllImport("__Internal")]
         private static extern string InstantGamesBridgeGetStorageDefaultType();
 
         [DllImport("__Internal")]
@@ -36,7 +39,7 @@ namespace InstantGamesBridge.Modules.Storage
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeDeleteStorageData(string key, string storageType);
 #else
-        public StorageType defaultType { get; } = StorageType.LocalStorage;
+        public StorageType defaultType => StorageType.LocalStorage;
 
         private const string _storageDataEditorPlayerPrefsPrefix = "bridge_storage_data";
 #endif
@@ -46,19 +49,28 @@ namespace InstantGamesBridge.Modules.Storage
 
         private const string _valuesSeparator = "{bridge_values_separator}";
 
-        private readonly Dictionary<string, List<Action<bool, string>>> _getDataCallbacks = new Dictionary<string, List<Action<bool, string>>>();
+        private readonly Dictionary<string, List<Action<bool, string>>> _getDataCallbacks = new();
 
-        private readonly Dictionary<string, List<Action<bool, List<string>>>> _getMultipleDataCallbacks = new Dictionary<string, List<Action<bool, List<string>>>>();
+        private readonly Dictionary<string, List<Action<bool, List<string>>>> _getMultipleDataCallbacks = new();
 
-        private readonly Dictionary<string, List<Action<bool>>> _setDataCallbacks = new Dictionary<string, List<Action<bool>>>();
+        private readonly Dictionary<string, List<Action<bool>>> _setDataCallbacks = new();
 
-        private readonly Dictionary<string, List<Action<bool>>> _deleteDataCallbacks = new Dictionary<string, List<Action<bool>>>();
+        private readonly Dictionary<string, List<Action<bool>>> _deleteDataCallbacks = new();
 
 
         public bool IsSupported(StorageType storageType)
         {
 #if !UNITY_EDITOR
             return InstantGamesBridgeIsStorageSupported(ConvertStorageType(storageType)) == "true";
+#else
+            return storageType == StorageType.LocalStorage;
+#endif
+        }
+        
+        public bool IsAvailable(StorageType storageType)
+        {
+#if !UNITY_EDITOR
+            return InstantGamesBridgeIsStorageAvailable(ConvertStorageType(storageType)) == "true";
 #else
             return storageType == StorageType.LocalStorage;
 #endif

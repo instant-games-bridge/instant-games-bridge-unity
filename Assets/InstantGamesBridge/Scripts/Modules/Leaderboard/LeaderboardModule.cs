@@ -133,7 +133,7 @@ namespace InstantGamesBridge.Modules.Leaderboard
         public void SetScore(params SetScorePlatformDependedOptions[] platformDependedOptions)
         {
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardSetScore(platformDependedOptions.ToJson().SurroundWithBraces().Fix());
+            InstantGamesBridgeLeaderboardSetScore(platformDependedOptions.ToJson());
 #else
             OnLeaderboardSetScoreCompleted("false");
 #endif
@@ -143,7 +143,7 @@ namespace InstantGamesBridge.Modules.Leaderboard
         {
             _getScoreCallback = onComplete;
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardGetScore(platformDependedOptions.ToJson().SurroundWithBraces().Fix());
+            InstantGamesBridgeLeaderboardGetScore(platformDependedOptions.ToJson());
 #else
             OnLeaderboardGetScoreCompleted("false");
 #endif
@@ -153,7 +153,7 @@ namespace InstantGamesBridge.Modules.Leaderboard
         {
             _getEntriesCallback = onComplete;
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardGetEntries(platformDependedOptions.ToJson().SurroundWithBraces().Fix());
+            InstantGamesBridgeLeaderboardGetEntries(platformDependedOptions.ToJson());
 #else
             OnLeaderboardGetEntriesCompletedSuccess("false");
 #endif
@@ -168,7 +168,7 @@ namespace InstantGamesBridge.Modules.Leaderboard
         public void ShowNativePopup(params ShowNativePopupPlatformDependedOptions[] platformDependedOptions)
         {
 #if !UNITY_EDITOR
-            InstantGamesBridgeLeaderboardShowNativePopup(platformDependedOptions.ToJson().SurroundWithBraces().Fix());
+            InstantGamesBridgeLeaderboardShowNativePopup(platformDependedOptions.ToJson());
 #else
             OnLeaderboardShowNativePopupCompleted("false");
 #endif

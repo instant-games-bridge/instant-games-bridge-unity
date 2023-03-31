@@ -1,6 +1,7 @@
 ﻿#if UNITY_WEBGL
-#if !UNITY_EDITOR
 using System;
+using InstantGamesBridge.Common;
+#if !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
 
@@ -9,7 +10,19 @@ namespace InstantGamesBridge.Modules.Platform
     public class PlatformModule
     {
 #if !UNITY_EDITOR
-        public string id { get; } = InstantGamesBridgeGetPlatformId();
+        public PlatformId id 
+        { 
+            get
+            {
+                var state = InstantGamesBridgeGetPlatformId();
+
+                if (Enum.TryParse<PlatformId>(state, true, out var value)) {
+                    return value;
+                }
+
+                return PlatformId.Mock;
+            }
+        }
 
         public string language { get; } = InstantGamesBridgeGetPlatformLanguage();
 
@@ -27,11 +40,11 @@ namespace InstantGamesBridge.Modules.Platform
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeSendMessageToPlatform(string message);
 #else
-        public string id { get; } = "mock";
+        public PlatformId id => PlatformId.Mock;
 
-        public string language { get; } = "en";
+        public string language => "en";
 
-        public string payload { get; } = null;
+        public string payload => null;
 #endif
 
         public void SendMessage(PlatformMessage message)
@@ -67,7 +80,6 @@ namespace InstantGamesBridge.Modules.Platform
 
             InstantGamesBridgeSendMessageToPlatform(messageString);
 #endif
-
         }
     }
 }

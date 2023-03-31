@@ -11,5 +11,10 @@ namespace InstantGamesBridge.Modules.Advertisement
         {
             this.ignoreDelay = ignoreDelay;
         }
+
+        protected override string Serialize()
+        {
+            return ignoreDelay.ToString();
+        }
     }
 }

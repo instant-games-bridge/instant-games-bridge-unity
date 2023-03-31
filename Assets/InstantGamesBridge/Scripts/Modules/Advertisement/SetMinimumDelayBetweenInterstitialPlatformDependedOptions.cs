@@ -1,5 +1,4 @@
 ﻿using System;
-using InstantGamesBridge.Common;
 
 namespace InstantGamesBridge.Modules.Advertisement
 {
@@ -12,11 +11,10 @@ namespace InstantGamesBridge.Modules.Advertisement
         {
             this.seconds = seconds;
         }
-    
-        public new string ToJson()
+
+        protected override string Serialize()
         {
-            var platform = GetTargetPlatformString();
-            return seconds.ToString().SurroundWithKey(platform);
+            return seconds.ToString();
         }
     }
 }

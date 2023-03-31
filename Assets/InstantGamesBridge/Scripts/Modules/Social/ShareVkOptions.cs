@@ -1,4 +1,6 @@
 ﻿using System;
+using InstantGamesBridge.Common;
+using UnityEngine;
 
 namespace InstantGamesBridge.Modules.Social
 {
@@ -9,8 +11,13 @@ namespace InstantGamesBridge.Modules.Social
 
         public ShareVkOptions(string link)
         {
-            _targetPlatform = OptionsTargetPlatform.VK;
+            _targetPlatformId = PlatformId.VK;
             this.link = link;
+        }
+
+        protected override string Serialize()
+        {
+            return JsonUtility.ToJson(this);
         }
     }
 }

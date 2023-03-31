@@ -1,4 +1,6 @@
 ﻿using System;
+using InstantGamesBridge.Common;
+using UnityEngine;
 
 namespace InstantGamesBridge.Modules.Leaderboard
 {
@@ -11,9 +13,14 @@ namespace InstantGamesBridge.Modules.Leaderboard
 
         public ShowNativePopupVkOptions(int userResult, bool global)
         {
-            _targetPlatform = OptionsTargetPlatform.VK;
+            _targetPlatformId = PlatformId.VK;
             this.userResult = userResult;
             this.global = global;
+        }
+        
+        protected override string Serialize()
+        {
+            return JsonUtility.ToJson(this);
         }
     }
 }

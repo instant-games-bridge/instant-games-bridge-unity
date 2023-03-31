@@ -20,6 +20,8 @@ namespace Examples
         [SerializeField] private Text _isCreatePostSupported;
 
         [SerializeField] private Text _isRateSupported;
+        
+        [SerializeField] private Text _isExternalLinksAllowed;
 
         [SerializeField] private Button _shareButton;
 
@@ -54,6 +56,7 @@ namespace Examples
             _isAddToHomeScreenSupported.text = $"Is Add To Home Screen Supported: { Bridge.social.isAddToHomeScreenSupported }";
             _isCreatePostSupported.text = $"Is Create Post Supported: { Bridge.social.isCreatePostSupported }";
             _isRateSupported.text = $"Is Rate Supported: { Bridge.social.isRateSupported }";
+            _isExternalLinksAllowed.text = $"Is External Links Allowed: { Bridge.social.isExternalLinksAllowed }";
 
             _shareButton.onClick.AddListener(OnShareButtonClicked);
             _inviteFriendsButton.onClick.AddListener(OnInviteFriendsButtonClicked);

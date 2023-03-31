@@ -81,7 +81,7 @@ namespace InstantGamesBridge.Modules.Player
                 
                 try
                 {
-                    var photosContainer = JsonUtility.FromJson<PhotosContainer>(json.SurroundWithKey("photos").SurroundWithBraces().Fix());
+                    var photosContainer = JsonUtility.FromJson<PhotosContainer>(json.SurroundWithKey("photos").FixBooleans().SurroundWithBraces());
                     return photosContainer.photos;
                 }
                 catch (Exception e)
@@ -122,7 +122,7 @@ namespace InstantGamesBridge.Modules.Player
             _authorizationCallback = onComplete;
 
 #if !UNITY_EDITOR
-            InstantGamesBridgeAuthorizePlayer(platformDependedOptions.ToJson().SurroundWithBraces().Fix());
+            InstantGamesBridgeAuthorizePlayer(platformDependedOptions.ToJson());
 #else
             OnAuthorizeCompleted("false");
 #endif

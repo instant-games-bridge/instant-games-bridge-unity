@@ -1,8 +1,8 @@
 ﻿#if UNITY_WEBGL
 using System;
 using UnityEngine;
-#if !UNITY_EDITOR
 using InstantGamesBridge.Common;
+#if !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
 
@@ -79,7 +79,7 @@ namespace InstantGamesBridge.Modules.Advertisement
         {
 #if !UNITY_EDITOR
             var options = otherPlatformDependedOptions.ToJson();
-            InstantGamesBridgeShowBanner(options.SurroundWithBraces().Fix());
+            InstantGamesBridgeShowBanner(options);
 #else
             OnBannerStateChanged(BannerState.Loading.ToString());
             OnBannerStateChanged(BannerState.Shown.ToString());
@@ -114,14 +114,14 @@ namespace InstantGamesBridge.Modules.Advertisement
                 options += ", " + other;
             }
 
-            InstantGamesBridgeSetMinimumDelayBetweenInterstitial(options.SurroundWithBraces().Fix());
+            InstantGamesBridgeSetMinimumDelayBetweenInterstitial(options.SurroundWithBraces());
 #endif
         }
 
         public void ShowInterstitial(bool ignoreDelay = false)
         {
 #if !UNITY_EDITOR
-            var json = ignoreDelay.ToString().SurroundWithKey("ignoreDelay").SurroundWithBraces().Fix();
+            var json = ignoreDelay.ToString().SurroundWithKey("ignoreDelay").FixBooleans().SurroundWithBraces();
             InstantGamesBridgeShowInterstitial(json);
 #else
             var delta = DateTime.Now - _lastInterstitialShownTimestamp;
@@ -147,7 +147,7 @@ namespace InstantGamesBridge.Modules.Advertisement
                 options += ", " + other;
             }
 
-            InstantGamesBridgeShowInterstitial(options.SurroundWithBraces().Fix());
+            InstantGamesBridgeShowInterstitial(options.SurroundWithBraces());
 #else
             OnInterstitialStateChanged(InterstitialState.Loading.ToString());
             OnInterstitialStateChanged(InterstitialState.Opened.ToString());

@@ -11,8 +11,12 @@ namespace Examples
         [SerializeField] private Text _defaultTypeText;
 
         [SerializeField] private Text _isLocalStorageSupportedText;
+        
+        [SerializeField] private Text _isLocalStorageAvailableText;
 
         [SerializeField] private Text _isPlatformInternalSupportedText;
+        
+        [SerializeField] private Text _isPlatformInternalAvailableText;
 
         [SerializeField] private InputField _coinsInput;
 
@@ -35,6 +39,8 @@ namespace Examples
             _defaultTypeText.text = $"Default Type: { Bridge.storage.defaultType }";
             _isLocalStorageSupportedText.text = $"Is Local Storage Supported: { Bridge.storage.IsSupported(StorageType.LocalStorage) }";
             _isPlatformInternalSupportedText.text = $"Is Platform Internal Supported: { Bridge.storage.IsSupported(StorageType.PlatformInternal) }";
+            _isLocalStorageAvailableText.text = $"Is Local Storage Available: { Bridge.storage.IsAvailable(StorageType.LocalStorage) }";
+            _isPlatformInternalAvailableText.text = $"Is Platform Internal Available: { Bridge.storage.IsAvailable(StorageType.PlatformInternal) }";
 
             _setStorageDataButton.onClick.AddListener(OnSetStorageDataButtonClicked);
             _getStorageDataButton.onClick.AddListener(OnGetStorageDataButtonClicked);
