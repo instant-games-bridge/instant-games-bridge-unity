@@ -112,9 +112,10 @@ namespace InstantGamesBridge.Modules.Advertisement
             var other = otherPlatformDependedOptions.ToJson();
             if (!string.IsNullOrEmpty(other)) {
                 options += ", " + other;
+                options.SurroundWithBraces();
             }
 
-            InstantGamesBridgeSetMinimumDelayBetweenInterstitial(options.SurroundWithBraces());
+            InstantGamesBridgeSetMinimumDelayBetweenInterstitial(options);
 #endif
         }
 
@@ -145,9 +146,10 @@ namespace InstantGamesBridge.Modules.Advertisement
             var other = otherPlatformDependedOptions.ToJson();
             if (!string.IsNullOrEmpty(other)) {
                 options += ", " + other;
+                options.SurroundWithBraces();
             }
 
-            InstantGamesBridgeShowInterstitial(options.SurroundWithBraces());
+            InstantGamesBridgeShowInterstitial(options);
 #else
             OnInterstitialStateChanged(InterstitialState.Loading.ToString());
             OnInterstitialStateChanged(InterstitialState.Opened.ToString());
