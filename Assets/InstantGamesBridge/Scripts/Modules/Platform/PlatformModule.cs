@@ -28,6 +28,8 @@ namespace InstantGamesBridge.Modules.Platform
 
         public string payload { get; } = InstantGamesBridgeGetPlatformPayload();
 
+        public string tld { get; } = InstantGamesBridgeGetPlatformTld();
+
         [DllImport("__Internal")]
         private static extern string InstantGamesBridgeGetPlatformId();
 
@@ -36,6 +38,9 @@ namespace InstantGamesBridge.Modules.Platform
 
         [DllImport("__Internal")]
         private static extern string InstantGamesBridgeGetPlatformPayload();
+
+        [DllImport("__Internal")]
+        private static extern string InstantGamesBridgeGetPlatformTld();
         
         [DllImport("__Internal")]
         private static extern void InstantGamesBridgeSendMessageToPlatform(string message);
@@ -45,6 +50,8 @@ namespace InstantGamesBridge.Modules.Platform
         public string language => "en";
 
         public string payload => null;
+        
+        public string tld => null;
 #endif
 
         public void SendMessage(PlatformMessage message)
@@ -54,12 +61,16 @@ namespace InstantGamesBridge.Modules.Platform
 
             switch (message)
             {
-                case PlatformMessage.GameLoadingStarted:
-                    messageString = "game_loading_started";
+                case PlatformMessage.GameReady:
+                    messageString = "game_ready";
+                    break;
+                
+                case PlatformMessage.InGameLoadingStarted:
+                    messageString = "in_game_loading_started";
                     break;
 
-                case PlatformMessage.GameLoadingStopped:
-                    messageString = "game_loading_stopped";
+                case PlatformMessage.InGameLoadingStopped:
+                    messageString = "in_game_loading_stopped";
                     break;
 
                 case PlatformMessage.GameplayStarted:

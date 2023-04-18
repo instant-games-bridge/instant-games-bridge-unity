@@ -24,6 +24,14 @@ mergeInto(LibraryManager.library, {
         return buffer
     },
     
+    InstantGamesBridgeGetPlatformTld: function() {
+        var platformTld = window.getPlatformTld()
+        var bufferSize = lengthBytesUTF8(platformTld) + 1
+        var buffer = _malloc(bufferSize)
+        stringToUTF8(platformTld, buffer, bufferSize)
+        return buffer
+    },
+    
     InstantGamesBridgeSendMessageToPlatform: function(message) {
         window.sendMessageToPlatform(UTF8ToString(message))
     },

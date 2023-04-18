@@ -208,6 +208,15 @@
                 }
             }
 
+            window.getPlatformTld = function() {
+                let tld = bridge.platform.tld
+                if (typeof tld === 'string') {
+                    return tld
+                } else {
+                    return ''
+                }
+            }
+
             window.sendMessageToPlatform = function(message) {
                 bridge.platform.sendMessage(message)
             }

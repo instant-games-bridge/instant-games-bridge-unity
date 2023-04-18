@@ -2,8 +2,9 @@
 {
     public enum PlatformMessage
     {
-        GameLoadingStarted,
-        GameLoadingStopped,
+        GameReady,
+        InGameLoadingStarted,
+        InGameLoadingStopped,
         GameplayStarted,
         GameplayStopped,
         PlayerGotAchievement
