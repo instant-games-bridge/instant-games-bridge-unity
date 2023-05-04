@@ -28,25 +28,33 @@ namespace InstantGamesBridge.Common
         public static string ToJson(this PlatformDependedOptionsBase[] platformDependedOptions)
         {
             var json = string.Empty;
-            var alreadyAddedPlatforms = new List<PlatformId>();
-
-            for (var i = 0; i < platformDependedOptions.Length; i++)
+            
+            if (platformDependedOptions.Length > 0)
             {
-                var options = platformDependedOptions[i];
-                var targetPlatform = options.GetTargetPlatform();
+                var alreadyAddedPlatforms = new List<PlatformId>();
 
-                if (alreadyAddedPlatforms.Contains(targetPlatform))
+                for (var i = 0; i < platformDependedOptions.Length; i++)
                 {
-                    continue;
-                }
+                    var options = platformDependedOptions[i];
+                    var targetPlatform = options.GetTargetPlatform();
 
-                if (i > 0 && i <= platformDependedOptions.Length - 1)
-                {
-                    json += ", ";
-                }
+                    if (alreadyAddedPlatforms.Contains(targetPlatform))
+                    {
+                        continue;
+                    }
 
-                json += options.ToJson();
-                alreadyAddedPlatforms.Add(targetPlatform);
+                    if (i > 0 && i <= platformDependedOptions.Length - 1)
+                    {
+                        json += ", ";
+                    }
+
+                    json += options.ToJson();
+                    alreadyAddedPlatforms.Add(targetPlatform);
+                }
+            }
+            else
+            {
+                json = "{}";
             }
 
             return json;
