@@ -262,7 +262,11 @@
             }
 
             window.authorizePlayer = function(options) {
-                bridge.player.authorize(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.player.authorize(options)
                     .then(() => {
                         sendMessageToUnity('OnAuthorizeCompleted', 'true')
                     })
@@ -370,7 +374,11 @@
             }
 
             window.showBanner = function(options) {
-                options = JSON.parse(options)
+                if (options) {
+                    options = JSON.parse(options)
+                } else {
+                    options = { }
+                }
                 options['crazy_games'] = {
                     containerId: 'crazy-games-responsive-banner-container'
                 }
@@ -382,7 +390,11 @@
             }
 
             window.showInterstitial = function(options) {
-                bridge.advertisement.showInterstitial(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.advertisement.showInterstitial(options)
             }
 
             window.showRewarded = function() {
@@ -424,7 +436,11 @@
             }
 
             window.share = function(options) {
-                bridge.social.share(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.social.share(options)
                     .then(() => {
                         sendMessageToUnity('OnShareCompleted', 'true')
                     })
@@ -444,7 +460,11 @@
             }
 
             window.joinCommunity = function(options) {
-                bridge.social.joinCommunity(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.social.joinCommunity(options)
                     .then(() => {
                         sendMessageToUnity('OnJoinCommunityCompleted', 'true')
                     })
@@ -454,7 +474,11 @@
             }
 
             window.createPost = function(options) {
-                bridge.social.createPost(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.social.createPost(options)
                     .then(() => {
                         sendMessageToUnity('OnCreatePostCompleted', 'true')
                     })
@@ -520,7 +544,11 @@
             }
 
             window.leaderboardSetScore = function(options) {
-                bridge.leaderboard.setScore(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.leaderboard.setScore(options)
                     .then(() => {
                         sendMessageToUnity('OnLeaderboardSetScoreCompleted', 'true')
                     })
@@ -530,7 +558,11 @@
             }
 
             window.leaderboardGetScore = function(options) {
-                bridge.leaderboard.getScore(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.leaderboard.getScore(options)
                     .then(data => {
                         if (data) {
                             if (typeof data !== 'string') {
@@ -548,7 +580,11 @@
             }
 
             window.leaderboardGetEntries = function(options) {
-                bridge.leaderboard.getEntries(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.leaderboard.getEntries(options)
                     .then(data => {
                         if (data) {
                             if (typeof data !== 'string') {
@@ -566,7 +602,11 @@
             }
 
             window.leaderboardShowNativePopup = function(options) {
-                bridge.leaderboard.showNativePopup(JSON.parse(options))
+                if (options) {
+                    options = JSON.parse(options)
+                }
+
+                bridge.leaderboard.showNativePopup(options)
                     .then(() => {
                         sendMessageToUnity('OnLeaderboardShowNativePopupCompleted', 'true')
                     })
