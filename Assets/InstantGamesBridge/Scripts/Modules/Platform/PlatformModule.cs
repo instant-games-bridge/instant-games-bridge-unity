@@ -14,13 +14,25 @@ namespace InstantGamesBridge.Modules.Platform
         { 
             get
             {
-                var state = InstantGamesBridgeGetPlatformId();
+                var platformId = InstantGamesBridgeGetPlatformId();
 
-                if (Enum.TryParse<PlatformId>(state, true, out var value)) {
-                    return value;
+                switch (platformId)
+                {
+                    case "vk":
+                        return PlatformId.VK;
+                    
+                    case "yandex":
+                        return PlatformId.Yandex;
+                    
+                    case "crazy_games":
+                        return PlatformId.CrazyGames;
+                    
+                    case "absolute_games":
+                        return PlatformId.AbsoluteGames;
+                    
+                    default:
+                        return PlatformId.Mock;
                 }
-
-                return PlatformId.Mock;
             }
         }
 
