@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.8.2
+  bundleVersion: 1.9.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -504,9 +504,10 @@ PlayerSettings:
   openGLRequireES31AEP: 0
   openGLRequireES32: 0
   m_TemplateCustomTags:
-    OVERLAY_BACKGROUND_COLOR: '#383838'
-    PROGRESS_BAR_BACKGROUND_COLOR: '#242424'
-    PROGRESS_BAR_FILL_COLOR: '#FF9A00'
+    GAME_DISTRIBUTION_GAME_ID: '-'
+    OVERLAY_BACKGROUND_COLOR: '-'
+    PROGRESS_BAR_BACKGROUND_COLOR: '-'
+    PROGRESS_BAR_FILL_COLOR: '-'
   mobileMTRendering:
     Android: 1
     iPhone: 1

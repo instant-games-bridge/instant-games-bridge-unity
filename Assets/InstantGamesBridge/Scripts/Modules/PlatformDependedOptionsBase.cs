@@ -37,6 +37,9 @@ namespace InstantGamesBridge.Modules
                 
                 case PlatformId.AbsoluteGames:
                     return "absolute_games";
+                
+                case PlatformId.GameDistribution:
+                    return "game_distribution";
 
                 default:
                     throw new ArgumentOutOfRangeException();

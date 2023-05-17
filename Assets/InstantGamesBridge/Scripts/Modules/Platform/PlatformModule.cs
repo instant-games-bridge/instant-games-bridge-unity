@@ -29,6 +29,9 @@ namespace InstantGamesBridge.Modules.Platform
                     
                     case "absolute_games":
                         return PlatformId.AbsoluteGames;
+
+                    case "game_distribution":
+                        return PlatformId.GameDistribution;
                     
                     default:
                         return PlatformId.Mock;

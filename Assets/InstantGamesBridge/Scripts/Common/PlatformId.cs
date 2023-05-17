@@ -6,6 +6,7 @@
         VK,
         Yandex,
         CrazyGames,
-        AbsoluteGames
+        AbsoluteGames,
+        GameDistribution
     }
 }

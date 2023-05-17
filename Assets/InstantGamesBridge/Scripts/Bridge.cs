@@ -21,11 +21,11 @@ namespace InstantGamesBridge
 
         public static PlatformModule platform => instance._platform; 
 
-        public static SocialModule social =>instance. _social; 
+        public static SocialModule social => instance._social; 
 
-        public static PlayerModule player =>instance. _player; 
+        public static PlayerModule player => instance._player; 
 
-        public static DeviceModule device =>instance. _device; 
+        public static DeviceModule device => instance._device; 
 
         public static LeaderboardModule leaderboard => instance._leaderboard; 
 
