@@ -53,6 +53,9 @@ namespace InstantGamesBridge.Modules.Advertisement
         private DateTime _lastInterstitialShownTimestamp = DateTime.MinValue;
 #else
         [DllImport("__Internal")]
+        private static extern string InstantGamesBridgeGetInterstitialState();
+
+        [DllImport("__Internal")]
         private static extern string InstantGamesBridgeMinimumDelayBetweenInterstitial();
 
         [DllImport("__Internal")]
@@ -168,7 +171,14 @@ namespace InstantGamesBridge.Modules.Advertisement
             OnRewardedStateChanged(RewardedState.Closed.ToString());
 #endif
         }
-        
+
+
+        private void Awake()
+        {
+#if !UNITY_EDITOR
+            OnInterstitialStateChanged(InstantGamesBridgeGetInterstitialState());
+#endif
+        }
         
         private void OnBannerStateChanged(string value)
         {

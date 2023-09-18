@@ -155,10 +155,10 @@ namespace Examples
             Bridge.advertisement.ShowInterstitial(ignoreDelay);
 
             // Platform specific variant
-            /*Bridge.advertisement.ShowInterstitial(
+            Bridge.advertisement.ShowInterstitial(
                 new ShowInterstitialVkOptions(ignoreDelay),
                 new ShowInterstitialYandexOptions(ignoreDelay),
-                new ShowInterstitialCrazyGamesOptions(ignoreDelay));*/
+                new ShowInterstitialCrazyGamesOptions(ignoreDelay));
         }
 
         private void OnShowRewardedButtonClicked()
