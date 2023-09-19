@@ -137,6 +137,14 @@ mergeInto(LibraryManager.library, {
     },
 
 
+    InstantGamesBridgeGetInterstitialState: function() {
+        var interstitialState = window.getInterstitialState()
+        var bufferSize = lengthBytesUTF8(interstitialState) + 1
+        var buffer = _malloc(bufferSize)
+        stringToUTF8(interstitialState, buffer, bufferSize)
+        return buffer
+    },
+
     InstantGamesBridgeIsBannerSupported: function() {
         var isBannerSupported = window.getIsBannerSupported()
         var bufferSize = lengthBytesUTF8(isBannerSupported) + 1
