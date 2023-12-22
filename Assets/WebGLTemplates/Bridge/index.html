@@ -656,6 +656,71 @@
                         sendMessageToUnity('OnLeaderboardShowNativePopupCompleted', 'false')
                     })
             }
+
+            window.getIsPaymentsSupported = function() {
+                return bridge.payments.isSupported.toString()
+            }
+
+            window.paymentsPurchase = function(purchaseId) {
+                bridge.payments.purchase(purchaseId)
+                    .then(() => {
+                        sendMessageToUnity('OnPaymentsPurchaseCompleted', 'true')
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnPaymentsPurchaseCompleted', 'false')
+                    })
+            }
+
+            window.paymentsConsumePurchase = function(purchaseToken) {
+                bridge.payments.consumePurchase(purchaseToken)
+                    .then(() => {
+                        sendMessageToUnity('OnPaymentsConsumePurchaseCompleted', 'true')
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnPaymentsConsumePurchaseCompleted', 'false')
+                    })
+            }
+
+            window.paymentsGetCatalog = function() {
+                bridge.payments.getCatalog()
+                    .then(data => {
+                        if (data) {
+                            if (typeof data !== 'string') {
+                                data = JSON.stringify(data)
+                            }
+
+                            data = data.replaceAll('imageURI', 'icon')
+
+                            sendMessageToUnity('OnPaymentsGetCatalogCompletedSuccess', data)
+                        } else {
+                            sendMessageToUnity('OnPaymentsGetCatalogCompletedSuccess', '')
+                        }
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnPaymentsGetCatalogCompletedFailed', 'false')
+                    })
+            }
+
+            window.paymentsGetPurchases = function() {
+                bridge.payments.getPurchases()
+                    .then(data => {
+                        if (data) {
+                            if (typeof data !== 'string') {
+                                data = JSON.stringify(data)
+                            }
+
+                            data = data.replaceAll('productID', 'id')
+                            data = data.replaceAll('purchaseToken', 'token')
+
+                            sendMessageToUnity('OnPaymentsGetPurchasesCompletedSuccess', data)
+                        } else {
+                            sendMessageToUnity('OnPaymentsGetPurchasesCompletedSuccess', '')
+                        }
+                    })
+                    .catch(error => {
+                        sendMessageToUnity('OnPaymentsGetPurchasesCompletedFailed', 'false')
+                    })
+            }
         </script>
     </body>
 </html>

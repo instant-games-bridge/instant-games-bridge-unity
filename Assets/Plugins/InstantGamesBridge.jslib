@@ -337,6 +337,30 @@ mergeInto(LibraryManager.library, {
 
     InstantGamesBridgeLeaderboardShowNativePopup: function(options) {
         window.leaderboardShowNativePopup(UTF8ToString(options))
+    },
+
+    InstantGamesBridgeIsPaymentsSupported: function() {
+        var isPaymentsSupported = window.getIsPaymentsSupported()
+        var bufferSize = lengthBytesUTF8(isPaymentsSupported) + 1
+        var buffer = _malloc(bufferSize)
+        stringToUTF8(isPaymentsSupported, buffer, bufferSize)
+        return buffer
+    },
+
+    InstantGamesBridgePaymentsPurchase: function(id) {
+        window.paymentsPurchase(UTF8ToString(id))
+    },
+
+    InstantGamesBridgePaymentsConsumePurchase: function(token) {
+        window.paymentsConsumePurchase(UTF8ToString(token))
+    },
+    
+    InstantGamesBridgePaymentsGetPurchases: function() {
+        window.paymentsGetPurchases()
+    },
+        
+    InstantGamesBridgePaymentsGetCatalog: function() {
+        window.paymentsGetCatalog()
     }
 
 });
