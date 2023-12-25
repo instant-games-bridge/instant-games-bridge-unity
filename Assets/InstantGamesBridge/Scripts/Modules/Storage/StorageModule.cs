@@ -40,21 +40,15 @@ namespace InstantGamesBridge.Modules.Storage
         private static extern void InstantGamesBridgeDeleteStorageData(string key, string storageType);
 #else
         public StorageType defaultType => StorageType.LocalStorage;
-
         private const string _storageDataEditorPlayerPrefsPrefix = "bridge_storage_data";
 #endif
         private const string _dataSeparator = "{bridge_data_separator}";
-
         private const string _keysSeparator = "{bridge_keys_separator}";
-
         private const string _valuesSeparator = "{bridge_values_separator}";
 
         private readonly Dictionary<string, List<Action<bool, string>>> _getDataCallbacks = new();
-
         private readonly Dictionary<string, List<Action<bool, List<string>>>> _getMultipleDataCallbacks = new();
-
         private readonly Dictionary<string, List<Action<bool>>> _setDataCallbacks = new();
-
         private readonly Dictionary<string, List<Action<bool>>> _deleteDataCallbacks = new();
 
 
@@ -97,6 +91,19 @@ namespace InstantGamesBridge.Modules.Storage
 
         public void Get(List<string> keys, Action<bool, List<string>> onComplete, StorageType? storageType = null)
         {
+            var keysCount = keys.Count;
+            if (keysCount <= 0)
+            {
+                onComplete?.Invoke(false, null);
+                return;
+            }
+
+            if (keysCount == 1)
+            {
+                Get(keys[0], (success, data) => { onComplete?.Invoke(success, success ? new List<string> { data } : null); }, storageType);
+                return;
+            }
+            
             var key = string.Join(_keysSeparator, keys);
             if (_getMultipleDataCallbacks.TryGetValue(key, out var callbacks))
             {
