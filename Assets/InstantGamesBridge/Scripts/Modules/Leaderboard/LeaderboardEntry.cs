@@ -7,13 +7,9 @@ namespace InstantGamesBridge.Modules.Leaderboard
     public class LeaderboardEntry
     {
         public string id;
-
         public string name;
-
         public List<string> photos;
-
         public int score;
-
         public int rank;
 
         public LeaderboardEntry(string id, string name, List<string> photos, int score, int rank)

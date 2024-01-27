@@ -361,6 +361,18 @@ mergeInto(LibraryManager.library, {
         
     InstantGamesBridgePaymentsGetCatalog: function() {
         window.paymentsGetCatalog()
+    },
+    
+    InstantGamesBridgeIsRemoteConfigSupported: function() {
+        var isRemoteConfigSupported = window.getIsRemoteConfigSupported()
+        var bufferSize = lengthBytesUTF8(isRemoteConfigSupported) + 1
+        var buffer = _malloc(bufferSize)
+        stringToUTF8(isRemoteConfigSupported, buffer, bufferSize)
+        return buffer
+    },
+    
+    InstantGamesBridgeRemoteConfigGet: function(options) {
+        window.remoteConfigGet(UTF8ToString(options))
     }
 
 });

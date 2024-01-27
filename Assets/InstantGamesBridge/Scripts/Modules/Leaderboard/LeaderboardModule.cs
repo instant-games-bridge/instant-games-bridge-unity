@@ -116,11 +116,8 @@ namespace InstantGamesBridge.Modules.Leaderboard
 #endif
 
         private Action<bool> _setScoreCallback;
-
         private Action<bool, int> _getScoreCallback;
-
         private Action<bool, List<LeaderboardEntry>> _getEntriesCallback;
-
         private Action<bool> _showNativePopupCallback;
 
 

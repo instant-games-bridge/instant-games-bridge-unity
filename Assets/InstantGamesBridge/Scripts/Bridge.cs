@@ -8,6 +8,7 @@ using InstantGamesBridge.Modules.Leaderboard;
 using InstantGamesBridge.Modules.Payments;
 using InstantGamesBridge.Modules.Platform;
 using InstantGamesBridge.Modules.Player;
+using InstantGamesBridge.Modules.RemoteConfig;
 using InstantGamesBridge.Modules.Social;
 
 namespace InstantGamesBridge
@@ -23,6 +24,7 @@ namespace InstantGamesBridge
         public static DeviceModule device => instance._device; 
         public static LeaderboardModule leaderboard => instance._leaderboard; 
         public static PaymentsModule payments => instance._payments; 
+        public static RemoteConfigModule remoteConfig => instance._remoteConfig; 
 
         private AdvertisementModule _advertisement;
         private GameModule _game;
@@ -33,6 +35,7 @@ namespace InstantGamesBridge
         private DeviceModule _device;
         private LeaderboardModule _leaderboard;
         private PaymentsModule _payments;
+        private RemoteConfigModule _remoteConfig;
 
         protected override void Awake()
         {
@@ -46,6 +49,7 @@ namespace InstantGamesBridge
             _device = new DeviceModule();
             _leaderboard = gameObject.AddComponent<LeaderboardModule>();
             _payments = gameObject.AddComponent<PaymentsModule>();
+            _remoteConfig = gameObject.AddComponent<RemoteConfigModule>();
         }
     }
 }

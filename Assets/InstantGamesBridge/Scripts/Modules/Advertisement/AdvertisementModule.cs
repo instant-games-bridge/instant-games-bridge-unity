@@ -11,15 +11,11 @@ namespace InstantGamesBridge.Modules.Advertisement
     public class AdvertisementModule : MonoBehaviour
     {
         public event Action<BannerState> bannerStateChanged;
-        
         public event Action<InterstitialState> interstitialStateChanged;
-
         public event Action<RewardedState> rewardedStateChanged;
 
         public BannerState bannerState { get; private set; } = BannerState.Hidden;
-
         public InterstitialState interstitialState { get; private set; } = InterstitialState.Closed;
-
         public RewardedState rewardedState { get; private set; } = RewardedState.Closed;
 
         public int minimumDelayBetweenInterstitial

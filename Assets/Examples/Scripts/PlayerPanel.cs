@@ -10,19 +10,12 @@ namespace Examples
     public class PlayerPanel : MonoBehaviour
     {
         [SerializeField] private Text _isAuthorizationSupported;
-
         [SerializeField] private Text _isAuthorized;
-
         [SerializeField] private Text _id;
-
         [SerializeField] private Text _name;
-
         [SerializeField] private Image _photo;
-
         [SerializeField] private Toggle _authorizeYandexScopesOption;
-
         [SerializeField] private Button _authorizeButton;
-
         [SerializeField] private GameObject _overlay;
 
         private void Start()

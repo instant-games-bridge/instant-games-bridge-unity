@@ -8,7 +8,6 @@ namespace InstantGamesBridge.Modules.Leaderboard
     public class SetScoreYandexOptions : SetScorePlatformDependedOptions
     {
         public int score;
-
         public string leaderboardName;
 
         public SetScoreYandexOptions(int score, string leaderboardName)

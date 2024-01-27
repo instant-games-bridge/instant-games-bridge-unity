@@ -8,23 +8,14 @@ namespace Examples
     public class PlatformPanel : MonoBehaviour
     {
         [SerializeField] private Text _id;
-
         [SerializeField] private Text _language;
-
         [SerializeField] private Text _payload;
-        
         [SerializeField] private Text _tld;
-
         [SerializeField] private Button _sendGameReadyMessageButton;
-        
         [SerializeField] private Button _sendInGameLoadingStartedMessageButton;
-        
         [SerializeField] private Button _sendInGameLoadingStoppedMessageButton;
-        
         [SerializeField] private Button _sendGameplayStartedMessageButton;
-        
         [SerializeField] private Button _sendGameplayStoppedMessageButton;
-        
         [SerializeField] private Button _sendPlayerGotAchievementMessageButton;
 
         private void Start()

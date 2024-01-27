@@ -8,41 +8,23 @@ namespace Examples
     public class LeaderboardPanel : MonoBehaviour
     {
         [SerializeField] private Text _isSupported;
-
         [SerializeField] private Text _isNativePopupSupported;
-
         [SerializeField] private Text _isMultipleBoardsSupported;
-
         [SerializeField] private Text _isSetScoreSupported;
-
         [SerializeField] private Text _isGetScoreSupported;
-
         [SerializeField] private Text _isGetEntriesSupported;
-
         [SerializeField] private InputField _showNativePopupVkUserResult;
-
         [SerializeField] private Toggle _showNativePopupVkGlobalToggle;
-
         [SerializeField] private Button _showNativePopupButton;
-
         [SerializeField] private InputField _yandexLeaderboardNameInput;
-
         [SerializeField] private InputField _getSetScoreYandexScoreInput;
-        
         [SerializeField] private Button _setScoreButton;
-
         [SerializeField] private Button _getScoreButton;
-
         [SerializeField] private Toggle _getEntriesYandexIncludeUserToggle;
-
         [SerializeField] private InputField _getEntriesYandexQuantityAroundInput;
-
         [SerializeField] private InputField _getEntriesYandexQuantityTopInput;
-
         [SerializeField] private Button _getEntriesButton;
-
         [SerializeField] private Text _entriesContainer;
-
         [SerializeField] private GameObject _overlay;
 
         private void Start()

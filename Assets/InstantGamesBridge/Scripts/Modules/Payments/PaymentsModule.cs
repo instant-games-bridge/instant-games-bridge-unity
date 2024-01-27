@@ -1,7 +1,9 @@
-﻿using System;
+﻿#if UNITY_WEBGL
+using System;
 using System.Collections.Generic;
 using InstantGamesBridge.Common;
 using UnityEngine;
+
 #if !UNITY_EDITOR
 using System.Runtime.InteropServices;
 #endif
@@ -180,3 +182,4 @@ namespace InstantGamesBridge.Modules.Payments
         }
     }
 }
+#endif

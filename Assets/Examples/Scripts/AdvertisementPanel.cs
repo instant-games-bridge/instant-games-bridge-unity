@@ -9,33 +9,20 @@ namespace Examples
     public class AdvertisementPanel : MonoBehaviour
     {
         [SerializeField] private Text _bannerState;
-        
         [SerializeField] private Text _interstitialState;
-
         [SerializeField] private Text _rewardedState;
-        
         [SerializeField] private Text _bannerSupported;
-        
         [SerializeField] private InputField _minimumDelayBetweenInterstitial;
-
         [SerializeField] private Button _setMinimumDelayBetweenInterstitialButton;
-
         [SerializeField] private Button _showBannerButton;
-        
         [SerializeField] private Button _hideBannerButton;
-        
         [SerializeField] private Button _showInterstitialButton;
-
         [SerializeField] private Toggle _showInterstitialIgnoreDelayToggle;
-
         [SerializeField] private Button _showRewardedButton;
-
         [SerializeField] private GameObject _overlay;
 
         private readonly List<BannerState> _lastBannerStates = new();
-        
         private readonly List<InterstitialState> _lastInterstitialStates = new();
-        
         private readonly List<RewardedState> _lastRewardedStates = new();
 
 

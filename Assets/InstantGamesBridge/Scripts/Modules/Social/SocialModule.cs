@@ -154,17 +154,11 @@ namespace InstantGamesBridge.Modules.Social
 #endif
 
         private Action<bool> _shareCallback;
-
         private Action<bool> _inviteFriendsCallback;
-
         private Action<bool> _joinCommunityCallback;
-
         private Action<bool> _createPostCallback;
-
         private Action<bool> _addToHomeScreenCallback;
-
         private Action<bool> _addToFavoritesCallback;
-
         private Action<bool> _rateCallback;
 
 

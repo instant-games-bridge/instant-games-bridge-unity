@@ -40,9 +40,7 @@ namespace InstantGamesBridge.Modules.Platform
         }
 
         public string language { get; } = InstantGamesBridgeGetPlatformLanguage();
-
         public string payload { get; } = InstantGamesBridgeGetPlatformPayload();
-
         public string tld { get; } = InstantGamesBridgeGetPlatformTld();
 
         [DllImport("__Internal")]
@@ -61,11 +59,8 @@ namespace InstantGamesBridge.Modules.Platform
         private static extern void InstantGamesBridgeSendMessageToPlatform(string message);
 #else
         public PlatformId id => PlatformId.Mock;
-
         public string language => "en";
-
         public string payload => null;
-        
         public string tld => null;
 #endif
 
