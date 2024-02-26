@@ -104,20 +104,6 @@ namespace InstantGamesBridge.Modules.Advertisement
 #endif
         }
 
-        public void SetMinimumDelayBetweenInterstitial(SetMinimumDelayBetweenInterstitialPlatformDependedOptions firstPlatformDependedOptions, params SetMinimumDelayBetweenInterstitialPlatformDependedOptions[] otherPlatformDependedOptions)
-        {
-#if !UNITY_EDITOR
-            var options = firstPlatformDependedOptions.ToJson();
-            var other = otherPlatformDependedOptions.ToJson();
-            if (!string.IsNullOrEmpty(other)) {
-                options += ", " + other;
-                options.SurroundWithBraces();
-            }
-
-            InstantGamesBridgeSetMinimumDelayBetweenInterstitial(options);
-#endif
-        }
-
         public void ShowInterstitial(bool ignoreDelay = false)
         {
 #if !UNITY_EDITOR
@@ -135,24 +121,6 @@ namespace InstantGamesBridge.Modules.Advertisement
             {
                 OnInterstitialStateChanged(InterstitialState.Failed.ToString());
             }
-#endif
-        }
-
-        public void ShowInterstitial(ShowInterstitialPlatformDependedOptions firstPlatformDependedOptions, params ShowInterstitialPlatformDependedOptions[] otherPlatformDependedOptions)
-        {
-#if !UNITY_EDITOR
-            var options = firstPlatformDependedOptions.ToJson();
-            var other = otherPlatformDependedOptions.ToJson();
-            if (!string.IsNullOrEmpty(other)) {
-                options += ", " + other;
-                options.SurroundWithBraces();
-            }
-
-            InstantGamesBridgeShowInterstitial(options);
-#else
-            OnInterstitialStateChanged(InterstitialState.Loading.ToString());
-            OnInterstitialStateChanged(InterstitialState.Opened.ToString());
-            OnInterstitialStateChanged(InterstitialState.Closed.ToString());
 #endif
         }
 

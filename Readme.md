@@ -7,6 +7,7 @@ Supported platforms:
 + [Crazy Games](https://crazygames.com)
 + [Absolute Games](https://ag.ru)
 + [Game Distribution](https://gamedistribution.com)
++ [VK Play](https://vkplay.ru/)
 + Other [Work In Progress]
 
 Plugins for other game engines:

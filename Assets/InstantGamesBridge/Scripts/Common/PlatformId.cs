@@ -7,6 +7,7 @@
         Yandex,
         CrazyGames,
         AbsoluteGames,
-        GameDistribution
+        GameDistribution,
+        VKPlay
     }
 }

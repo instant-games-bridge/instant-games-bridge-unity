@@ -32,6 +32,9 @@ namespace InstantGamesBridge.Modules.Platform
 
                     case "game_distribution":
                         return PlatformId.GameDistribution;
+
+                    case "vk_play":
+                        return PlatformId.VKPlay;
                     
                     default:
                         return PlatformId.Mock;
